@@ -1,16 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import './assets/styles/fonts.css';
+import './assets/styles/globals.scss';
+import './assets/styles/buttons.css';
+import './assets/styles/Cards.css';
+
+import RouteApp from './routes';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { createBrowserHistory } from 'history';
+import { HashRouter as Router } from 'react-router-dom';
+
+const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Router history={history}>
+      <Provider store={store}>
+        <RouteApp />
+      </Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

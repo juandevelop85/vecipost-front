@@ -1,0 +1,7 @@
+{
+  "name": "gys",
+  "dns": "http://localhost:3000",
+  "dns2": "http://ec2-54-174-191-157.compute-1.amazonaws.com/api",
+  "socket": "ws://ec2-54-174-191-157.compute-1.amazonaws.com/api/socket.io/socket.io.js",
+  "ip": ""
+}

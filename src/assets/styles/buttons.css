@@ -1,0 +1,167 @@
+.btn {
+  position: relative;
+  border-radius: 45px;
+  margin: 5px;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  color: #ecf0f1;
+  transition: background-color 0.3s;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #0845ab;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.btn:before {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, 0.3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+}
+
+/* Styles, not important */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.btn.medium {
+  width: 50%;
+}
+
+.btn.full {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.btn.small {
+  width: 2.5em;
+  height: 2.5em;
+  font-size: 1em;
+}
+
+.btn.round {
+  border-radius: 25px;
+}
+
+.btn.orange:hover,
+.btn.orange:focus {
+  background-color: #d35400;
+}
+
+.btn.orange {
+  background-color: #e67e22;
+}
+
+.btn.red {
+  background-color: #e74c3c;
+}
+
+.btn.red:hover,
+.btn.red:focus {
+  background-color: #c0392b;
+}
+
+.btn.blue:hover,
+.btn.blue:focus {
+  background-color: #3454d1;
+}
+
+.btn.blue {
+  background-color: #20377c;
+  color: #fff;
+}
+
+.btn.yellow:hover,
+.btn.yellow:focus {
+  background-color: #f1b55f;
+}
+
+.btn.yellow {
+  background-color: #FEA528;
+  color: #fff;
+}
+
+
+
+.btn.white {
+  background-color: #fff;
+  color: #000;
+}
+
+
+
+/*
+*
+*/
+.actionButtons {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+* Button group
+*/
+.btn-group button {
+  /* background-color: #4caf50;
+  border: 1px solid green; */
+  color: white;
+  padding: 10px 24px;
+  cursor: pointer;
+  float: left;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
