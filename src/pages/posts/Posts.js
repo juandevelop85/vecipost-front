@@ -1,13 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
+import moment from 'moment';
 import './Posts.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from './postsReducer';
+import { useHistory, Link } from 'react-router-dom';
+import { getPostsAsync, incrementPage, changeY, selectData, actualPage, actualY, selectPost } from './postsReducer';
+import Logo from '../../assets/images/img_avatar.png';
+import useObserver from '../../hooks/useObserver';
+import PostList from './postList';
+import { PublicPosts } from '../public_post/PublicPosts';
+import { setCookie } from '../../api/session';
+
+let localPrevY = 0;
+let localPage = 0;
+
+moment.locale('es');
 
 export function Posts() {
+  const history = useHistory();
   const loadingRef = useRef(null);
-  const count = useSelector(selectCount);
+  const postsData = useSelector(selectData);
+  const page = useSelector(actualPage);
+  const prevY = useSelector(actualY);
+  const [createNewPost, setCreateNewPost] = useState(false);
+
+  localPrevY = prevY;
+  localPage = page;
+
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+  setCookie('u_session', 'juandevelop85@gmail.com');
+
+  useEffect(() => {
+    dispatch(getPostsAsync(page));
+  }, []);
 
   useEffect(() => {
     const options = {
@@ -15,17 +40,22 @@ export function Posts() {
       rootMargin: '0px',
       threshold: 1.0,
     };
-    const observer = new IntersectionObserver(handleObserver.bind(this), options);
-    // observer.observe(loadingRef.current);
+    const observer = new window.IntersectionObserver(handleObserver, options);
+    observer.observe(loadingRef.current);
   }, []);
 
   const handleObserver = (entities, observer) => {
     const y = entities[0].boundingClientRect.y;
-    console.log(y);
+
+    if (localPrevY > y) {
+      addPosts();
+    }
+    dispatch(changeY(y));
   };
 
-  const onIncrementPosts = () => {
-    setIncrementAmount((oldArray) => [...oldArray, [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]]);
+  const addPosts = () => {
+    dispatch(incrementPage());
+    dispatch(getPostsAsync(localPage));
   };
 
   const loadingCSS = {
@@ -33,40 +63,23 @@ export function Posts() {
     margin: '30px',
   };
 
+  const goToPostDetail = (id) => {
+    // dispatch(selectPost(id))
+    history.push(`/status/${id}`);
+  };
+
   return (
     <div className='container'>
       <div className='posts-container'>
-        {incrementAmount.map((item, index) => {
-          return (
-            <div className='post' key={index}>
-              <div className='post-info'>
-                <div className='top-action-card'>
-                  <div></div>
-                  <div className='action-card'>
-                    <label className='salary-text'>Salario: </label>
-                  </div>
-                </div>
-                <br></br>
-                <label>
-                  <strong>Empresa:</strong>
-                </label>
-              </div>
-              <div className='post-action'>
-                <div>
-                  <i className='fa fa-thumbs-o-up post-action-event'></i> <label className='post-action.text'>5</label>
-                </div>
-                <div>
-                  <i className='fa fa-thumbs-o-down post-action-event'></i> <label className='post-action.text'>3</label>
-                </div>
-                <div>
-                  <i className='fa fa-comments post-action-event'></i> <label className='post-action.text'>234</label>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-        <div ref={(loadingRef) => (loadingRef = loadingRef)} style={loadingCSS}></div>
+        <div className='return-section'>
+          <i className='fa fa-pencil action-pages' onClick={() => setCreateNewPost((actual) => !actual)}></i>
+        </div>
+        <div className='col-6 column wrap'>{createNewPost && <PublicPosts />}</div>
+        <PostList data={postsData} action={(id) => goToPostDetail(id)} />
+
+        <div ref={loadingRef} style={loadingCSS}></div>
       </div>
+      <div className='col-2 column wrap'></div>
     </div>
   );
 }

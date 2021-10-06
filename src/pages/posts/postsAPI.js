@@ -1,6 +1,14 @@
+import { get, post } from '../../api/client';
+
+//Esta variable puede ser llamada desde el back o simplemente no ingresar como parametro y manejar el limit en el back
+const limit = 10;
+
 // A mock function to mimic making an async request for data
-export function fetchCount(amount = 1) {
-  return new Promise((resolve) =>
-    setTimeout(() => resolve({ data: amount }), 500)
-  );
+export function fetchPosts(page) {
+  return new Promise((resolve) => {
+    const route = `/posts/v1/getPosts/${limit}/${page}`;
+    get(route).then((data) => {
+      resolve(data)
+    });
+  });
 }

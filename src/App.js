@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './pages/counter/Counter';
 import { Posts } from './pages/posts/Posts';
 import './App.css';
 

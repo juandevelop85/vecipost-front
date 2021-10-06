@@ -1,0 +1,28 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+  isLoading: false,
+  createNewPost: false
+};
+
+export const generalReducer = createSlice({
+  name: 'general',
+  initialState,
+  // The `reducers` field lets us define reducers and generate associated actions
+  reducers: {
+    setIsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+    createNewPost: (state) => {
+      //Con el llamado cambiamos el valor del stado
+      state.isLoading = !state.isLoading;
+    },
+  },
+});
+
+export const { setIsLoading, createNewPost } = generalReducer.actions;
+
+export const isLoading = (state) => state.general.isLoading;
+export const isNewPost = (state) => state.general.createNewPost;
+
+export default generalReducer.reducer;

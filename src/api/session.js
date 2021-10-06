@@ -32,7 +32,7 @@ export const setCookie = (key, value) => {
     let saveValue;
 
     if (isJson(value)) {
-      saveValue = utf8ToB64(JSON.stringify(value));//JSON.stringify(value);
+      saveValue = utf8ToB64(JSON.stringify(value));
     } else {
       saveValue = value;
     }

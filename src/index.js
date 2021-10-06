@@ -4,7 +4,6 @@ import './index.css';
 import './assets/styles/fonts.css';
 import './assets/styles/globals.scss';
 import './assets/styles/buttons.css';
-import './assets/styles/Cards.css';
 
 import RouteApp from './routes';
 import { store } from './app/store';

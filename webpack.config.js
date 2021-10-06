@@ -18,9 +18,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          // options: {
-          //   presets: ["@babel/preset-react"],
-          // },
         },
       },
       {
@@ -39,42 +36,6 @@ module.exports = {
           'sass-loader',
         ],
       },
-      //   {
-      //     test: /\.(scss|sass|css)$/,
-      //     exclude: /node_modules/,
-      //     loaders: [
-      //       MiniCssExtractPlugin.loader,
-      //       {
-      //         loader: "css-loader",
-      //         options: {
-      //           modules: true,
-      //           sourceMap: true,
-      //           importLoaders: 1,
-      //           localIdentName: "[local]___[hash:base64:5]",
-      //         },
-      //       },
-      //       "sass-loader",
-      //     ],
-      //   },
-      // {
-      //   test: /\.module\.s(a|c)ss$/,
-      //   loader: [
-      //     isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
-      //     {
-      //       loader: "css-loader",
-      //       options: {
-      //         modules: true,
-      //         sourceMap: isDevelopment,
-      //       },
-      //     },
-      //     {
-      //       loader: "sass-loader",
-      //       options: {
-      //         sourceMap: isDevelopment,
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
