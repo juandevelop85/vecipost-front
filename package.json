@@ -2,6 +2,7 @@
   "name": "vecindario",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -13,6 +14,7 @@
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.17.1",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3"

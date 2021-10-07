@@ -8,7 +8,16 @@ export function fetchPosts(page) {
   return new Promise((resolve) => {
     const route = `/posts/v1/getPosts/${limit}/${page}`;
     get(route).then((data) => {
-      resolve(data)
+      resolve(data);
+    });
+  });
+}
+
+export function fetchLikeEvent(payload) {
+  return new Promise((resolve) => {
+    const route = '/postsevents/v1/likePost';
+    post(route, payload).then((data) => {
+      resolve(data);
     });
   });
 }

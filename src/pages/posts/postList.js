@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
 import './Posts.css';
+import { likeEvent } from './postsReducer';
+import { PublicComment } from '../public_comments/PublicComment';
 
-function PostList({ data, action }) {
+function PostList({ data, action, commentInNewPage = true }) {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [showCreateComment, setShowCreateComment] = useState(false);
+  
+  
+  const sendLikeEvent = (isLike, item) => {
+    dispatch(likeEvent({ post_id: item.id, isLike }));
+  };
+
+  const howCreateComment = (id) => {
+    if (commentInNewPage) {
+      history.push(`/create/comment/${id}`);
+    } else {
+      setShowCreateComment(!showCreateComment);
+    }
+  };
+
   return (
     <>
       {data?.map((item, index) => {
         let nameImage = typeof item?.user_email === 'string' ? item?.user_email.slice(0, 2) : 'VP';
         return (
-          <div className='post' key={`post-${index}`} onClick={() => action(item.id)}>
-            <div className='post-body'>
+          <div className='post' key={`post-${index}`}>
+            <div className='post-body' onClick={() => action(item.id)}>
               <div className='top-action-card'>
                 <div className='action-card'>
                   <div style={{ width: '15%' }}>
@@ -31,32 +52,37 @@ function PostList({ data, action }) {
             <div className='divisor'></div>
             <div className='post-action'>
               {item?.u_like_count === 1 && (
-                <div>
+                <div onClick={() => sendLikeEvent(null, item)}>
                   <i className='fa fa-heart post-action-event red'></i> <label className='post-action-text'>{item?.like_count}</label>
                 </div>
               )}
               {item?.u_like_count !== 1 && (
-                <div>
+                <div onClick={() => sendLikeEvent(true, item)}>
                   <i className='fa fa-heart-o post-action-event'></i> <label className='post-action-text'>{item?.like_count}</label>
                 </div>
               )}
               {item?.u_dislike_count === 1 && (
-                <div>
+                <div onClick={() => sendLikeEvent(null, item)}>
                   <i className='fa fa-thumbs-down post-action-event red'></i> <label className='post-action-text'>{item?.dislike_count}</label>
                 </div>
               )}
               {item?.u_dislike_count !== 1 && (
-                <div>
+                <div onClick={() => sendLikeEvent(false, item)}>
                   <i className='fa fa-thumbs-o-down post-action-event'></i> <label className='post-action-text'>{item?.dislike_count}</label>
                 </div>
               )}
-              <div>
+              <div onClick={() => howCreateComment(item.id)}>
                 <i className='fa fa-comments post-action-event'></i> <label className='post-action-text'>{item?.posts_comments?.length}</label>
               </div>
             </div>
           </div>
         );
       })}
+      {showCreateComment && (
+        <div className='add-comment'>
+          <PublicComment />
+        </div>
+      )}
     </>
   );
 }

@@ -9,6 +9,7 @@ import NotFound from '../pages/404';
 import { Posts } from '../pages/posts/Posts';
 import { PostsStatus } from '../pages/status/PostsStatus';
 import { PublicPosts } from '../pages/public_post/PublicPosts';
+import { PublicComment } from '../pages/public_comments/PublicComment';
 
 const RouteApp = () => (
   <Layout>
@@ -16,6 +17,7 @@ const RouteApp = () => (
       <PublicRoute restricted={true} exact path='/' component={Posts} />
       <PublicRoute restricted={true} exact path='/status/:id' component={PostsStatus} />
       <PublicRoute restricted={true} exact path='/create/post' component={PublicPosts} />
+      <PublicRoute restricted={true} exact path='/create/comment/:id' component={PublicComment} />
 
       <Route path='/404' component={NotFound} />
       <Redirect from='*' to='/404' />

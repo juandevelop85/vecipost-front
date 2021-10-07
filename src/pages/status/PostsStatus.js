@@ -3,9 +3,10 @@ import moment from 'moment';
 import './PostsStatus.css';
 import { useHistory, Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getPostDetailAsync, comments } from './postsStatusReducer';
-import { selectedPost } from '../posts/postsReducer';
+import { getPostDetailAsync, comments, updateDataPost } from './postsStatusReducer';
+import { selectData } from '../posts/postsReducer';
 import PostList from '../posts/postList';
+import { PublicComment } from '../public_comments/PublicComment';
 
 let localPrevY = 0;
 let localPage = 0;
@@ -15,9 +16,16 @@ moment.locale('es');
 export function PostsStatus() {
   const history = useHistory();
   const commentsData = useSelector(comments);
+  const posts = useSelector(selectData);
   const { id } = useParams();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    //Si posts cambia, modificamos el actual del state
+    const post = posts.filter((post) => post.id == id);
+    dispatch(updateDataPost(post));
+  }, [posts]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -63,23 +71,9 @@ export function PostsStatus() {
         </div>
         <div className='comments-section'>
           {commentsData?.map((post, index) => {
-            return <PostList data={[post]} key={index} action={() => null} />;
+            return <PostList data={[post]} key={index} action={() => null} commentInNewPage={false} />;
           })}
-          <div className='add-comment'>
-            <div className='add-comment'>
-              <input
-                type='text'
-                placeholder='Agregar comentario'
-                required
 
-                // defaultValue={item.institution}
-                // onChange={(e) => onSelectData(item.type, 'institution', e.target.value)}
-              />
-            </div>
-            <button className='btn blue medium'>
-              <span>Comentar</span>
-            </button>
-          </div>
           {commentsData[0]?.posts_comments?.map((comment, index) => {
             let nameImage = typeof comment?.user_email === 'string' ? comment?.user_email.slice(0, 2) : 'VP';
             return (
@@ -105,16 +99,6 @@ export function PostsStatus() {
                 </div>
                 <div className='comment-action'>
                   <div className='divisor'></div>
-                  {/* <div>
-                  <i className='fa fa-thumbs-o-up comment-action-event'></i> <label className='comment-action-text'>5</label>
-                </div>
-                <div>
-                  <i className='fa fa-thumbs-o-down comment-action-event'></i> <label className='comment-action-text'>3</label>
-                </div>
-                <div>
-                  <i className='fa fa-comments comment-action-event'></i>{' '}
-                  <label className='comment-action-text'>{comment?.comments_comments?.length}</label>
-                </div> */}
                 </div>
               </div>
             );

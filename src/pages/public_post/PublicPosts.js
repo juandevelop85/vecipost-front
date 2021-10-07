@@ -24,12 +24,10 @@ export function PublicPosts() {
   useEffect(() => {
     if (createPost.length > 0) {
       dispatch(addUserPost(createPost));
-      console.log('se creo un post', createPost[0]);
     }
   }, [createPost]);
-  // console.log(createPost);
-  const goToMenu = (id) => {
-    // dispatch(selectPost(id))
+  
+  const goToMenu = () => {
     history.push(`/`);
   };
 

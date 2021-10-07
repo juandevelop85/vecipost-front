@@ -16,7 +16,7 @@ const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router history={history}>
+    <Router history={history} basename={window.location.pathname}>
       <Provider store={store}>
         <RouteApp />
       </Provider>

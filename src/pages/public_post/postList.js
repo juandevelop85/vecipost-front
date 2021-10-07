@@ -3,7 +3,6 @@ import moment from 'moment';
 import './Posts.css';
 
 function PostList({ data, action }) {
-  console.log({ data });
   return (
     <>
       {data?.map((item, index) => {

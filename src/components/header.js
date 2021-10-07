@@ -18,11 +18,12 @@ function Header() {
     }
   };
 
-  
   return (
     <header>
-      <i className='fa fa-commenting logoHeader' onClick={() => history.push('/')}></i>
-      
+      <div>
+        <i className='fa fa-commenting logoHeader' onClick={() => history.push('/')}></i>
+      </div>
+      <input type='text' placeholder='Ingresa tu correo Electronico'/>
       <nav>
         <ul className='nav__links' id='myTopnav'>
           <li>
