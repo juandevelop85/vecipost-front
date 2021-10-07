@@ -1,13 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import '../assets/styles/Header.css';
 import { useHistory, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
-import { createNewPost } from '../reducers/generalReducer';
 
 function Header() {
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const openMenu = () => {
     var x = document.getElementById('myTopnav');
@@ -20,10 +16,7 @@ function Header() {
 
   return (
     <header>
-      <div>
-        <i className='fa fa-commenting logoHeader' onClick={() => history.push('/')}></i>
-      </div>
-      <input type='text' placeholder='Ingresa tu correo Electronico'/>
+      <i className='fa fa-commenting logoHeader' onClick={() => history.push('/')}></i>
       <nav>
         <ul className='nav__links' id='myTopnav'>
           <li>

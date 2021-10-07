@@ -25,15 +25,10 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 
 .post-body {
   padding: 20px;
-  position: relative;
-  font-size: small;
-  width: 100%;
-  padding: 40px;
   position: relative;
   font-size: small;
   width: 100%;
@@ -44,13 +39,6 @@
   align-content: center;
   justify-content: center;
 }
-
-/* .post:hover {
-  background-color: #f0f0f0;
-  color: #ffffff;
-  transition-duration: 0.5s;
-  transition-delay: 0.1s;
-} */
 
 .post h6 {
   opacity: 0.6;
@@ -110,6 +98,7 @@
 }
 
 .top-action-card {
+  width: 100%;
   justify-content: space-between;
   display: flex;
 }
@@ -122,39 +111,24 @@
   align-content: center;
   align-items: stretch;
   width: 100%;
-  
 }
 
-.progress-container {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  text-align: right;
-  width: 150px;
-}
-
-.progress {
-  background-color: #ddd;
-  border-radius: 3px;
-  height: 5px;
-  width: 100%;
-}
-
-.progress::after {
-  border-radius: 3px;
-  background-color: #2a265f;
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 5px;
-  width: 66%;
+.info-comment {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 11px;
 }
 
 .title-text {
   font-size: 11px;
   opacity: 0.9;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .date-post-text {

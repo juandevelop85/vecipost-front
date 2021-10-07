@@ -2,13 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import moment from 'moment';
 import './Posts.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getPostsAsync, incrementPage, changeY, selectData, actualPage, actualY, selectPost } from './postsReducer';
-import Logo from '../../assets/images/img_avatar.png';
-import useObserver from '../../hooks/useObserver';
 import PostList from './postList';
 import { PublicPosts } from '../public_post/PublicPosts';
-import { setCookie } from '../../api/session';
 
 let localPrevY = 0;
 let localPage = 0;
@@ -27,8 +24,6 @@ export function Posts() {
   localPage = page;
 
   const dispatch = useDispatch();
-
-  setCookie('u_session', 'juandevelop85@gmail.com');
 
   useEffect(() => {
     dispatch(getPostsAsync(page));

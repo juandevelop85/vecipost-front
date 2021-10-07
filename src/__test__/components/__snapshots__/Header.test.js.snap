@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer snapshot Comprobar la UI del componente Footer 1`] = `
+<header>
+  <i
+    className="fa fa-commenting logoHeader"
+    onClick={[Function]}
+  />
+  <nav>
+    <ul
+      className="nav__links"
+      id="myTopnav"
+    >
+      <li>
+        <a
+          href="/create/post"
+          onClick={[Function]}
+        >
+          Publicar post
+        </a>
+      </li>
+      <li>
+        <div
+          className="dropdown"
+        >
+          <div
+            className="dropbtn"
+          >
+            Opciones
+            <i
+              className="fa fa-caret-down"
+            />
+          </div>
+          <div
+            className="dropdown-content"
+          >
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              Mi perfil
+            </a>
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              Mensajes
+            </a>
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              Grupos
+            </a>
+          </div>
+        </div>
+      </li>
+      <li
+        className="icon"
+        onClick={[Function]}
+      >
+        <i
+          className="fa fa-bars"
+        />
+      </li>
+    </ul>
+  </nav>
+</header>
+`;
+
+exports[`Header snapshot Comprobar la UI del componente Footer 1`] = `
+<header>
+  <i
+    className="fa fa-commenting logoHeader"
+    onClick={[Function]}
+  />
+  <nav>
+    <ul
+      className="nav__links"
+      id="myTopnav"
+    >
+      <li>
+        <a
+          href="/create/post"
+          onClick={[Function]}
+        >
+          Publicar post
+        </a>
+      </li>
+      <li>
+        <div
+          className="dropdown"
+        >
+          <div
+            className="dropbtn"
+          >
+            Opciones
+            <i
+              className="fa fa-caret-down"
+            />
+          </div>
+          <div
+            className="dropdown-content"
+          >
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              Mi perfil
+            </a>
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              Mensajes
+            </a>
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              Grupos
+            </a>
+          </div>
+        </div>
+      </li>
+      <li
+        className="icon"
+        onClick={[Function]}
+      >
+        <i
+          className="fa fa-bars"
+        />
+      </li>
+    </ul>
+  </nav>
+</header>
+`;

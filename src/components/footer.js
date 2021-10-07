@@ -1,6 +1,5 @@
 import React from 'react';
 import '../assets/styles/Footer.css';
-import SpinnerApp from './spinnerApp';
 
 function Footer() {
   const [style, setStyle] = React.useState({ height: '202px', marginTop: '0px' });
@@ -8,7 +7,7 @@ function Footer() {
     <>
       <div className='footer' id='parent'>
         <div className='row center full' id='child'>
-          <SpinnerApp />
+          <p className='Footer-title'>Juan Vernaza con ❤️</p>
         </div>
       </div>
     </>

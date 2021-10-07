@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import moment from 'moment';
 import './PostsStatus.css';
-import { useHistory, Link, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPostDetailAsync, comments, updateDataPost } from './postsStatusReducer';
 import { selectData } from '../posts/postsReducer';
 import PostList from '../posts/postList';
-import { PublicComment } from '../public_comments/PublicComment';
-
-let localPrevY = 0;
-let localPage = 0;
 
 moment.locale('es');
 
@@ -35,34 +31,6 @@ export function PostsStatus() {
     dispatch(getPostDetailAsync(id));
   }, []);
 
-  // useEffect(() => {
-  //   const options = {
-  //     root: null,
-  //     rootMargin: '0px',
-  //     threshold: 1.0,
-  //   };
-  //   const observer = new window.IntersectionObserver(handleObserver, options);
-  //   observer.observe(loadingRef.current);
-  // }, []);
-
-  // const handleObserver = (entities, observer) => {
-  //   const y = entities[0].boundingClientRect.y;
-
-  //   if (localPrevY > y) {
-  //     addPosts();
-  //   }
-  //   dispatch(changeY(y));
-  // };
-
-  // const addPosts = () => {
-  //   dispatch(incrementPage());
-  //   dispatch(getPostsAsync(localPage));
-  // };
-
-  // const loadingCSS = {
-  //   height: '100px',
-  //   margin: '30px',
-  // };
   return (
     <div className='container'>
       <div className='comments-container'>
@@ -84,9 +52,8 @@ export function PostsStatus() {
                       <div style={{ width: '15%' }}>
                         <div className='image-name'>{nameImage}</div>
                       </div>
-                      <div style={{ width: '85%' }}>
+                      <div className='info-comment'>
                         <strong className='title-text'>{comment?.user_email}</strong>
-                        <br></br>
                         <strong className='date-comment-text'>{moment(comment?.created_at).format('LLL')}</strong>
                       </div>
                     </div>
@@ -104,7 +71,6 @@ export function PostsStatus() {
             );
           })}
         </div>
-        {/* <div ref={loadingRef} style={loadingCSS}></div> */}
       </div>
     </div>
   );

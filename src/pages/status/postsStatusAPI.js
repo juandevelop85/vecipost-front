@@ -1,4 +1,4 @@
-import { get, post } from '../../api/client';
+import { get } from '../../api/client';
 
 // A mock function to mimic making an async request for data
 export function fetchPostsDetail(id) {

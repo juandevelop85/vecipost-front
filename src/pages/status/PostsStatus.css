@@ -73,26 +73,14 @@
   position: relative;
   font-size: small;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: center;
 }
 
-/* .comment:hover {
-  background-color: #f0f0f0;
-  color: #ffffff;
-  transition-duration: 0.5s;
-  transition-delay: 0.1s;
-} */
-
-.comment h6 {
-  opacity: 0.6;
-  margin: 0;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.comment h2 {
-  letter-spacing: 1px;
-  margin: 10px 0;
-}
 
 .comment-preview {
   background-color: #20377c;
@@ -135,52 +123,6 @@
   color: #ff7500;
 }
 
-.top-action-card {
-  justify-content: space-between;
-  display: flex;
-}
-
-.action-card {
-  justify-content: flex-start;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.progress-container {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  text-align: right;
-  width: 150px;
-}
-
-.progress {
-  background-color: #ddd;
-  border-radius: 3px;
-  height: 5px;
-  width: 100%;
-}
-
-.progress::after {
-  border-radius: 3px;
-  background-color: #2a265f;
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 5px;
-  width: 66%;
-}
-
-.title-text {
-  font-size: 11px;
-  opacity: 0.9;
-  letter-spacing: 1px;
-}
 
 .date-comment-text {
   font-size: 9px;

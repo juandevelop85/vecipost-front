@@ -3,18 +3,29 @@ import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import './Posts.css';
-import { likeEvent } from './postsReducer';
+import { getPostsAsync, likeEvent } from './postsReducer';
 import { PublicComment } from '../public_comments/PublicComment';
+import { getCookie } from '../../api/session';
+import { setConfirmModalData } from '../../reducers/generalReducer';
 
 function PostList({ data, action, commentInNewPage = true }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showCreateComment, setShowCreateComment] = useState(false);
-  
-  
+
+  const userSession = localStorage.getItem('u_session');
+
   const sendLikeEvent = (isLike, item) => {
-    dispatch(likeEvent({ post_id: item.id, isLike }));
+    if (userSession == undefined) {
+      dispatch(setConfirmModalData({ show: true, title: 'Hola', message: 'Para interactuar debes ingresar tu email.', actionOk: null }));
+    } else {
+      dispatch(likeEvent({ post_id: item.id, isLike }));
+    }
   };
+
+  const reloadPosts = () => {
+    dispatch(getPostsAsync(0))
+  }
 
   const howCreateComment = (id) => {
     if (commentInNewPage) {
@@ -30,22 +41,21 @@ function PostList({ data, action, commentInNewPage = true }) {
         let nameImage = typeof item?.user_email === 'string' ? item?.user_email.slice(0, 2) : 'VP';
         return (
           <div className='post' key={`post-${index}`}>
-            <div className='post-body' onClick={() => action(item.id)}>
+            <div className='post-body' >
               <div className='top-action-card'>
                 <div className='action-card'>
                   <div style={{ width: '15%' }}>
                     <div className='image-name'>{nameImage}</div>
                   </div>
-                  <div style={{ width: '85%', padding: 15 }}>
+                  <div className='info-comment'>
                     <strong className='title-text'>{item?.user_email}</strong>
-                    <br></br>
                     <strong className='date-post-text'>{moment(item?.created_at).format('LLL')}</strong>
                   </div>
                 </div>
                 <div></div>
               </div>
               <br></br>
-              <strong className='title-text'>{item?.name}</strong>
+              <strong id={`post-${index}`} className='title-text' onClick={() => action(item.id)}>{item?.name}</strong>
               <br></br>
               <label className='comment-text'>{item?.content}</label>
             </div>
@@ -71,7 +81,7 @@ function PostList({ data, action, commentInNewPage = true }) {
                   <i className='fa fa-thumbs-o-down post-action-event'></i> <label className='post-action-text'>{item?.dislike_count}</label>
                 </div>
               )}
-              <div onClick={() => howCreateComment(item.id)}>
+              <div onClick={() => howCreateComment(item.id)} >
                 <i className='fa fa-comments post-action-event'></i> <label className='post-action-text'>{item?.posts_comments?.length}</label>
               </div>
             </div>

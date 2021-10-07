@@ -13,7 +13,7 @@ import { dns as API_URL } from '../config.json';
 function headers() {
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
-  const session = getCookie('u_session');
+  const session = localStorage.getItem('u_session');
   myHeaders.append('u_session', session);
   //   myHeaders.append("Content-Length", content.length.toString());
   //   myHeaders.append("X-Custom-Header", "ProcessThisImmediately");

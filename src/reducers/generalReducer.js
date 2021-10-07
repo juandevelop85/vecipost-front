@@ -2,7 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoading: false,
-  createNewPost: false
+  createNewPost: false,
+  confirmModalData: {
+    show: false,
+    title: '',
+    message: '',
+    actionOk: '',
+  },
 };
 
 export const generalReducer = createSlice({
@@ -17,12 +23,16 @@ export const generalReducer = createSlice({
       //Con el llamado cambiamos el valor del stado
       state.isLoading = !state.isLoading;
     },
+    setConfirmModalData: (state, action) => {
+      state.confirmModalData = action.payload;
+    }
   },
 });
 
-export const { setIsLoading, createNewPost } = generalReducer.actions;
+export const { setIsLoading, createNewPost, setConfirmModalData } = generalReducer.actions;
 
 export const isLoading = (state) => state.general.isLoading;
 export const isNewPost = (state) => state.general.createNewPost;
+export const confirmModalData = (state) => state.general.confirmModalData;
 
 export default generalReducer.reducer;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer snapshot Comprobar la UI del componente Footer 1`] = `
+<div
+  className="footer"
+  id="parent"
+>
+  <div
+    className="row center full"
+    id="child"
+  >
+    <p
+      className="Footer-title"
+    >
+      Juan Vernaza con ❤️
+    </p>
+  </div>
+</div>
+`;
