@@ -17,7 +17,7 @@ export function PublicComment() {
   const { id } = useParams();
   const createCommentStatus = useSelector(status);
   const comment = useSelector(newComment)
-  const session_user = localStorage.getItem('u_session');
+  const session_user = localStorage.getItem('authorization');
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [email, setEmail] = useState(session_user || '');
@@ -58,7 +58,7 @@ export function PublicComment() {
         ...data,
         post_id: parseInt(id),
       };
-      localStorage.setItem('u_session', data.email)
+      localStorage.setItem('authorization', data.email)
       dispatch(setCommentAsync(payload));
     } else {
       alert('Correo invalido');

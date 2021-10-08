@@ -38,7 +38,7 @@ export default function ConfirmModal() {
 
   const onSubmit = (data) => {
     if (validateEmail(email)) {
-      localStorage.setItem('u_session', email);
+      localStorage.setItem('authorization', email);
       setTimeout(() => {
         //Reseteamos el estado actual de post para prepararnos a solicitar nuevamente los post
         dispatch(restartState());

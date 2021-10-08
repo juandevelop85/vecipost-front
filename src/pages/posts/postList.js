@@ -13,7 +13,7 @@ function PostList({ data, action, commentInNewPage = true }) {
   const dispatch = useDispatch();
   const [showCreateComment, setShowCreateComment] = useState(false);
 
-  const userSession = localStorage.getItem('u_session');
+  const userSession = localStorage.getItem('authorization');
 
   const sendLikeEvent = (isLike, item) => {
     if (userSession == undefined) {
