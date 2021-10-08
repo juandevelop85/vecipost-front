@@ -3,7 +3,7 @@ import moment from 'moment';
 import './PublicPosts.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import { setPostsAsync, newPost } from './publicPostsReducer';
+import { setPostsAsync, newPost, status } from './publicPostsReducer';
 import { addUserPost } from '../posts/postsReducer';
 
 let localPrevY = 0;
@@ -18,8 +18,15 @@ export function PublicPosts() {
   const [content, setContent] = useState('');
   const [email, setEmail] = useState('');
   const [colorValidateEmail, setColorValidateEmail] = React.useState('#000000');
-
+  const createCommentStatus = useSelector(status);
+  
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (createCommentStatus === 'end') {
+      history.push('/')
+    }
+  }, [createCommentStatus]);
 
   useEffect(() => {
     if (createPost.length > 0) {

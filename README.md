@@ -1,44 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Mi Post poster
+## _Una aplaicación creada para publicar posts_
 
-## Available Scripts
 
-In the project directory, you can run:
+## Tecnologias utilizadas
 
-### `yarn start`
+Para desarrollar este proyecto en el backend hemos utilizado:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [node.js] - evented I/O for the backend
+- [Express] - fast node.js network app framework [@tjholowaychuk]
+- [Reactjs] - React helps you create interactive user interfaces easily. Design simple views for each state in your application
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Podra encontrar nuestro proyecto en los siguientes [back public repository][back], [front public repository][front] en GitHub.
 
-### `yarn test`
+## Installation Back
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Dillinger requires [Node.js](https://nodejs.org/) v14+ to run.
 
-### `yarn build`
+Se debe instalar las dependencies and devDependencies y asi mismo se debe instalar [pm2] para inicializar el back.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+npm i -g pm2
+cd vecipost
+npm i
+npm start
+```
+## Front
+Dillinger requires [Reactjs](https://nodejs.org/) v17+ to run.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Se debe instalar las dependencies and devDependencies y asi mismo se debe instalar [pm2] para inicializar el back.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+cd vecipost-front
+npm i
+npm start
+```
 
-### `yarn eject`
+## Plugins
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Esta aplicacion actualemente requiere lo siguientes plugins.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Plugin | README |
+| ------ | ------ |
+| sequelize | [https://sequelize.org/] |
+| pg | [https://github.com/brianc/node-postgres] |
+| pg-hstore | [https://github.com/scarney81/pg-hstore] |
+| jest | [https://jestjs.io/] |
+| webpack | [https://github.com/webpack/webpack] |
+| babel | [https://babel.dev/docs/en/next/babel-core] |
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+MIT
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Free Software, Hell Yeah!**
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+   [back]: <https://github.com/juandevelop85/vecipost>
+   [front]: <https://github.com/juandevelop85/vecipost-front>
+   [node.js]: <http://nodejs.org>
+   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
+   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
+   [express]: <http://expressjs.com>
+   [ReactJs]: <https://reactjs.org/>
+   [pm2]: <https://pm2.keymetrics.io/>
+
+   

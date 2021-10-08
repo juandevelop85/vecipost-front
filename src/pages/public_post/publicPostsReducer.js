@@ -28,7 +28,7 @@ export const postsReducer = createSlice({
         state.status = 'loading';
       })
       .addCase(setPostsAsync.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.status = 'end';
         state.data = [action.payload?.posts];
       });
   },
@@ -38,7 +38,6 @@ export const { incrementPage, decrementPage, changeY } = postsReducer.actions;
 
 //States to export
 export const newPost = (state) => state.publicpost.data;
-export const actualPage = (state) => state.publicpost.page;
-export const actualY = (state) => state.publicpost.prevY
+export const status = (state) => state.publicpost.status;
 
 export default postsReducer.reducer;
