@@ -25,7 +25,7 @@ describe('<Header />', () => {
 });
 
 describe('Header snapshot', () => {
-  test('Comprobar la UI del componente Footer', () => {
+  test('Comprobar la UI del componente Header', () => {
     const header = create(
       <ProviderMock>
         <Header />

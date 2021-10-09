@@ -13,4 +13,5 @@ export const store = configureStore({
     publicpost: publicPostsReducer,
     publiccomment: publicCommentsReducer,
   },
+  devTools: false
 });
