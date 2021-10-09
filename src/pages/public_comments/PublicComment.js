@@ -12,12 +12,14 @@ import { updatePosts } from '../posts/postsReducer';
 moment.locale('es');
 
 export function PublicComment() {
+  
+  const session_user = localStorage.getItem('authorization');
+
   const history = useHistory();
   const { register, handleSubmit } = useForm();
   const { id } = useParams();
   const createCommentStatus = useSelector(status);
   const comment = useSelector(newComment)
-  const session_user = localStorage.getItem('authorization');
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [email, setEmail] = useState(session_user || '');
@@ -69,7 +71,7 @@ export function PublicComment() {
     <div className='container'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='row center full'>
-          <div style={{ width: '50%' }}>
+          <div className='public-comment-container'>
             <div className='row center full'>
               <div className='col-12 column'>
                 <input
@@ -105,7 +107,7 @@ export function PublicComment() {
             </div>
             <div className='row center full'>
               <div className='col-12 column'>
-                <button type='submit' className='btn medium yellow'>
+                <button type='submit' className='btn full yellow'>
                   <span>Publicar</span>
                 </button>
               </div>

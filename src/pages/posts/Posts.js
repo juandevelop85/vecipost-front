@@ -4,7 +4,7 @@ import './Posts.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getPostsAsync, incrementPage, changeY, selectData, actualPage, actualY, selectPost } from './postsReducer';
-import PostList from './postList';
+import PostList from '../../components/postList';
 import { PublicPosts } from '../public_post/PublicPosts';
 
 let localPrevY = 0;

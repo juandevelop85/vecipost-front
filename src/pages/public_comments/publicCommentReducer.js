@@ -27,8 +27,9 @@ export const commentsReducer = createSlice({
         state.status = 'loading';
       })
       .addCase(setCommentAsync.fulfilled, (state, action) => {
+        console.log(action)
         state.status = 'end';
-        state.data = action.payload?.comments[0];
+        state.data = action.payload.comments[0];
       });
   },
 });

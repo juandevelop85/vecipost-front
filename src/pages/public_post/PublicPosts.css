@@ -1,7 +1,6 @@
 .public-post-container {
-  flex-basis: 100%;
   height: 50%;
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -13,19 +12,7 @@
 
 
 @media screen and (max-width: 768px) {
-  .social-panel-container.visible {
-    transform: translateX(0px);
-  }
-  .post {
-    width: 90%;
-  }
-  .title-text {
-    font-size: 10px;
-  }
-  .comment-text {
-    font-size: 10px;
-  }
-  .floating-btn {
-    right: 10px;
+  .public-post-container {
+    width: 100%;
   }
 }

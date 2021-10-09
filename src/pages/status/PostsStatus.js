@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPostDetailAsync, comments, updateDataPost } from './postsStatusReducer';
 import { selectData } from '../posts/postsReducer';
-import PostList from '../posts/postList';
+import PostList from '../../components/postList';
 
 moment.locale('es');
 

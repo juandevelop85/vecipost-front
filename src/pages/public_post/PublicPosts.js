@@ -3,7 +3,7 @@ import moment from 'moment';
 import './PublicPosts.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import { setPostsAsync, newPost, status } from './publicPostsReducer';
+import { setPostsAsync, newPost, status, restartStatus } from './publicPostsReducer';
 import { addUserPost } from '../posts/postsReducer';
 
 let localPrevY = 0;
@@ -12,18 +12,22 @@ let localPage = 0;
 moment.locale('es');
 
 export function PublicPosts() {
+
+  const session_user = localStorage.getItem('authorization');
+
   const history = useHistory();
   const createPost = useSelector(newPost);
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
-  const [email, setEmail] = useState('');
-  const [colorValidateEmail, setColorValidateEmail] = React.useState('#000000');
+  const [email, setEmail] = useState(session_user || '');
+  const [colorValidateEmail, setColorValidateEmail] = useState('#000000');
   const createCommentStatus = useSelector(status);
   
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (createCommentStatus === 'end') {
+      dispatch(restartStatus())
       history.push('/')
     }
   }, [createCommentStatus]);
@@ -63,7 +67,7 @@ export function PublicPosts() {
   return (
     <div className='container'>
       <div className='row center full'>
-        <div style={{ width: '50%' }}>
+        <div className='public-post-container'>
           <div className='row center full'>
             <div className='col-12 column'>
               <input type='text' placeholder='Nombre' value={name} onChange={(e) => setName(e.target.value)} />
@@ -87,7 +91,7 @@ export function PublicPosts() {
           </div>
           <div className='row center full'>
             <div className='col-12 column'>
-              <button className='btn medium yellow' type='button' onClick={() => createNewPost()}>
+              <button className='btn full yellow' type='button' onClick={() => createNewPost()}>
                 <span>Publicar</span>
               </button>
             </div>

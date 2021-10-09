@@ -4,23 +4,22 @@ import { fetchPublicPosts } from './publicPostsAPI';
 const initialState = {
   value: 0,
   status: 'idle',
-  data:  [],
+  data: [],
 };
 
-export const setPostsAsync = createAsyncThunk(
-  'public/createPosts',
-  async (data) => {
-    const response = await fetchPublicPosts(data);
-    // The value we return becomes the `fulfilled` action payload
-    return response;
-  }
-);
+export const setPostsAsync = createAsyncThunk('public/createPosts', async (data) => {
+  const response = await fetchPublicPosts(data);
+  // The value we return becomes the `fulfilled` action payload
+  return response;
+});
 
 export const postsReducer = createSlice({
   name: 'publicpost',
   initialState,
   reducers: {
-    
+    restartStatus: (state) => {
+      state.status = 'idle';
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -34,7 +33,7 @@ export const postsReducer = createSlice({
   },
 });
 
-export const { incrementPage, decrementPage, changeY } = postsReducer.actions;
+export const { restartStatus } = postsReducer.actions;
 
 //States to export
 export const newPost = (state) => state.publicpost.data;

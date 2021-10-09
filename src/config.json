@@ -2,6 +2,5 @@
   "name": "mypost",
   "dns2": "http://localhost:3000",
   "dns": "http://164.90.159.50/api",
-  "socket": "ws://ec2-54-174-191-157.compute-1.amazonaws.com/api/socket.io/socket.io.js",
   "ip": ""
 }

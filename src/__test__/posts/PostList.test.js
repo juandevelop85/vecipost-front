@@ -3,7 +3,7 @@ import postMock from '../../__mocks__/postsMock';
 import { mount, shallow } from 'enzyme';
 import { create } from 'react-test-renderer';
 import ProviderMock from '../../__mocks__/providerMock';
-import PostList from '../../pages/posts/postList';
+import PostList from '../../components/postList';
 
 describe('post component', () => {
   test('Render del componente', () => {

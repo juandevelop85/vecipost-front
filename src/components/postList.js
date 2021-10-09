@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
-import './Posts.css';
-import { getPostsAsync, likeEvent } from './postsReducer';
-import { PublicComment } from '../public_comments/PublicComment';
-import { getCookie } from '../../api/session';
-import { setConfirmModalData } from '../../reducers/generalReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import '../pages/posts/Posts.css';
+import { getPostsAsync, likeEvent, status } from '../pages/posts/postsReducer';
+import { PublicComment } from '../pages/public_comments/PublicComment';
+import { setConfirmModalData, setIsLoading } from '../reducers/generalReducer';
 
 function PostList({ data, action, commentInNewPage = true }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showCreateComment, setShowCreateComment] = useState(false);
-
+  const postListStatus = useSelector(status);
   const userSession = localStorage.getItem('authorization');
+  
+  useEffect(() => {
+    
+    if (postListStatus === 'loading') {
+      
+      dispatch(setIsLoading(true));
+    }
+    else if (postListStatus === 'end') {
+      dispatch(setIsLoading(false));
+    }
+  }, [postListStatus]);
 
   const sendLikeEvent = (isLike, item) => {
     if (userSession == undefined) {
