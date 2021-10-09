@@ -59,6 +59,8 @@ export function PublicPosts() {
   const createNewPost = () => {
     if (validateEmail(email)) {
       dispatch(setPostsAsync({ name, content, email }));
+      setName('');
+      setContent('');
     } else {
       alert('Correo invalido');
     }
